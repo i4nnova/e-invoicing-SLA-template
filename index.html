@@ -50,15 +50,9 @@
 
     @media (max-width: 520px) {
       .header-row {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
       }
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
     }
 
     .brand-logo {
@@ -68,37 +62,20 @@
       display: block;
     }
 
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: #4b5563;
-    }
-
-    .brand-text span:last-child {
-      font-size: 11px;
-      font-weight: 500;
-      color: #6b7280;
-      text-transform: none;
-      letter-spacing: 0.06em;
-    }
-
     .badge {
       padding: 4px 12px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      background: #f3f4f6;
+      border: 1px solid rgba(59, 170, 218, 0.7);
+      background: rgba(59, 170, 218, 0.06);
       font-size: 11px;
-      color: #4b5563;
+      color: #1f2933;
       text-transform: uppercase;
       letter-spacing: 0.15em;
     }
 
     .divider {
       height: 1px;
-      background: linear-gradient(to right, rgba(59, 170, 218, 0.35), rgba(229, 231, 235, 0));
+      background: linear-gradient(to right, rgba(59, 170, 218, 0.5), rgba(229, 231, 235, 0));
       margin-bottom: 18px;
     }
 
@@ -109,7 +86,7 @@
     }
 
     h1 span {
-      background: linear-gradient(to right, #3baada, #2563eb);
+      background: linear-gradient(to right, #3baada, #3baada);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -150,18 +127,19 @@
     }
 
     a.btn-primary {
-      background: linear-gradient(135deg, #3baada, #2563eb);
-      color: #f9fafb;
+      background: #3baada;
+      color: #ffffff;
+      border: 1px solid #3baada;
       box-shadow:
         0 10px 24px rgba(59, 170, 218, 0.35),
-        0 0 0 1px rgba(15, 23, 42, 0.1);
+        0 0 0 1px rgba(15, 23, 42, 0.05);
     }
 
     a.btn-primary:hover {
       transform: translateY(-1px);
       box-shadow:
-        0 16px 30px rgba(37, 99, 235, 0.35),
-        0 0 0 1px rgba(37, 99, 235, 0.4);
+        0 16px 30px rgba(59, 170, 218, 0.45),
+        0 0 0 1px rgba(59, 170, 218, 0.8);
     }
 
     a.btn-ghost {
@@ -173,8 +151,8 @@
     a.btn-ghost:hover {
       transform: translateY(-1px);
       border-color: #3baada;
-      color: #1d4ed8;
-      background: #f9fafb;
+      color: #0f172a;
+      background: rgba(59, 170, 218, 0.04);
     }
 
     .footnote {
@@ -188,18 +166,12 @@
   <main class="page">
     <section class="card">
       <div class="header-row">
-        <div class="brand">
-          <!-- Logo in root: assetsi4nnova-logo.png.png -->
-          <img
-            src="assetsi4nnova-logo.png.png"
-            alt="i4nnova logo"
-            class="brand-logo"
-          />
-          <div class="brand-text">
-            <span>I4NNOVA LIMITED</span>
-            <span>E‑Invoicing Platform</span>
-          </div>
-        </div>
+        <!-- Logo in root: assetsi4nnova-logo.png.png -->
+        <img
+          src="assetsi4nnova-logo.png.png"
+          alt="i4nnova logo"
+          class="brand-logo"
+        />
         <div class="badge">Service agreement</div>
       </div>
 
