@@ -2,19 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>E‑Invoicing SLA</title>
+  <title>E‑Invoicing SLA · i4nnova</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: radial-gradient(circle at top left, #1f2933, #020617 55%, #000 100%);
+      background: radial-gradient(circle at top left, #0b1f33, #020617 55%, #000 100%);
       color: #f9fafb;
     }
+
     .card {
       max-width: 1100px;
       width: 100%;
@@ -23,27 +25,123 @@
       grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.6fr);
       gap: 24px;
     }
+
     @media (max-width: 900px) {
       .card { grid-template-columns: minmax(0, 1fr); }
     }
+
     .left, .right {
       border-radius: 24px;
-      background: rgba(15, 23, 42, 0.96);
+      background: rgba(10, 16, 26, 0.96);
       padding: 24px 24px 18px;
-      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.95), 0 0 0 1px rgba(148, 163, 184, 0.25);
+      box-shadow:
+        0 16px 40px rgba(15, 23, 42, 0.95),
+        0 0 0 1px rgba(148, 163, 184, 0.25);
     }
+
+    .left {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .left::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 0 0, rgba(0, 160, 220, 0.25), transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(55, 65, 81, 0.5), transparent 60%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .left-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .brand-logo {
+      height: 38px;
+      object-fit: contain;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #e5e7eb;
+    }
+
+    .brand-text span:last-child {
+      font-size: 11px;
+      font-weight: 500;
+      color: #9ca3af;
+      text-transform: none;
+      letter-spacing: 0.05em;
+    }
+
     h1 {
       font-size: clamp(26px, 3vw, 32px);
       margin-bottom: 10px;
     }
+
     h1 span {
-      background: linear-gradient(to right, #38bdf8, #22c55e);
+      background: linear-gradient(to right, #00a0dc, #667085);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
-    p { font-size: 14px; line-height: 1.6; color: #d1d5db; margin-bottom: 16px; }
-    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+
+    p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #d1d5db;
+      margin-bottom: 16px;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin: 10px 0 18px;
+      font-size: 12px;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .meta-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #9ca3af;
+    }
+
+    .meta-value {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+      margin-bottom: 6px;
+    }
+
     a.btn {
       border-radius: 999px;
       padding: 9px 18px;
@@ -55,62 +153,160 @@
       gap: 8px;
       cursor: pointer;
       white-space: nowrap;
-      transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.15s;
+      transition:
+        transform 0.12s ease,
+        box-shadow 0.12s ease,
+        background-color 0.15s,
+        border-color 0.15s;
     }
+
     a.btn-primary {
-      background: linear-gradient(135deg, #38bdf8, #22c55e);
-      color: #020617;
-      box-shadow: 0 12px 28px rgba(56, 189, 248, 0.4);
+      background: linear-gradient(135deg, #00a0dc, #1f2933);
+      color: #f9fafb;
+      box-shadow:
+        0 12px 28px rgba(0, 160, 220, 0.4),
+        0 0 0 1px rgba(15, 23, 42, 0.9);
     }
-    a.btn-primary:hover { transform: translateY(-1px); }
+
+    a.btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow:
+        0 18px 36px rgba(0, 160, 220, 0.55),
+        0 0 0 1px rgba(191, 219, 254, 0.35);
+    }
+
     a.btn-ghost {
-      background: rgba(15, 23, 42, 0.95);
+      background: rgba(15, 23, 42, 0.96);
       color: #e5e7eb;
-      border: 1px solid rgba(148, 163, 184, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.75);
     }
-    a.btn-ghost:hover { transform: translateY(-1px); }
+
+    a.btn-ghost:hover {
+      transform: translateY(-1px);
+      border-color: rgba(226, 232, 240, 0.9);
+      background: rgba(15, 23, 42, 1);
+    }
+
+    .footnote {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-top: 6px;
+    }
+
+    .right-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 11px;
+      color: #9ca3af;
+    }
+
+    .pill {
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      background: rgba(15, 23, 42, 0.98);
+      color: #e5e7eb;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #00a0dc;
+      box-shadow: 0 0 14px rgba(0, 160, 220, 0.85);
+    }
+
     .right iframe {
       width: 100%;
       height: 100%;
       min-height: 260px;
       border-radius: 16px;
-      border: none;
-      background: #020617;
+      border: 1px solid rgba(30, 64, 175, 0.9);
+      background: radial-gradient(circle at top, #020617, #020617);
     }
   </style>
 </head>
 <body>
   <main class="card">
     <section class="left">
-      <h1>E‑Invoicing <span>Service Level Agreement</span></h1>
-      <p>
-        View or download the official SLA for the e‑invoicing platform,
-        including uptime commitments, support response targets, and data
-        protection terms.
-      </p>
-      <div class="actions">
-        <!-- Open in new tab -->
-        <a
-          href="i4nnova%20E-Invoice%20SLA.pdf"
-          class="btn btn-primary"
-          target="_blank"
-          rel="noopener"
-        >
-          ↗ Open full‑screen
-        </a>
-        <!-- Force browser to download -->
-        <a
-          href="i4nnova%20E-Invoice%20SLA.pdf"
-          class="btn btn-ghost"
-          download
-        >
-          ⬇ Download PDF
-        </a>
+      <div class="left-inner">
+        <header class="brand">
+          <!-- LOGO: assets/i4nnova-logo.png -->
+          <img
+            src="assets/i4nnova-logo.png"
+            alt="i4nnova logo"
+            class="brand-logo"
+          />
+          <div class="brand-text">
+            <span>I4NNOVA LIMITED</span>
+            <span>E‑Invoicing Platform</span>
+          </div>
+        </header>
+
+        <h1>E‑Invoicing <span>Service Level Agreement</span></h1>
+
+        <p>
+          Review and download the official Service Level Agreement for the i4nnova
+          e‑invoicing platform, including uptime targets, support response times,
+          and data protection commitments.
+        </p>
+
+        <div class="meta">
+          <div class="meta-item">
+            <span class="meta-label">Document</span>
+            <span class="meta-value">SLA (PDF)</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Version</span>
+            <span class="meta-value">v1.0 · March 2026</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Access</span>
+            <span class="meta-value">Public · Read‑only</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <!-- PDF: i4nnova E-Invoice SLA.pdf (spaces encoded as %20) -->
+          <a
+            href="i4nnova%20E-Invoice%20SLA.pdf"
+            class="btn btn-primary"
+            target="_blank"
+            rel="noopener"
+          >
+            ↗ Open full‑screen
+          </a>
+
+          <a
+            href="i4nnova%20E-Invoice%20SLA.pdf"
+            class="btn btn-ghost"
+            download
+          >
+            ⬇ Download PDF
+          </a>
+        </div>
+
+        <p class="footnote">
+          The document opens in a separate secure tab for the best reading experience on desktop and mobile.
+        </p>
       </div>
     </section>
 
     <section class="right">
-      <!-- Inline preview -->
+      <div class="right-header">
+        <div class="pill">
+          <span class="pill-dot"></span>
+          <span>Live SLA preview</span>
+        </div>
+        <span>PDF · read‑only</span>
+      </div>
+
+      <!-- Inline preview of the same PDF -->
       <iframe
         src="i4nnova%20E-Invoice%20SLA.pdf#view=FitH"
         title="E‑Invoicing SLA preview"
