@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>E‑Invoicing SLA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top left, #1f2933, #020617 55%, #000 100%);
+      color: #f9fafb;
+    }
+    .card {
+      max-width: 1100px;
+      width: 100%;
+      margin: 24px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.6fr);
+      gap: 24px;
+    }
+    @media (max-width: 900px) {
+      .card { grid-template-columns: minmax(0, 1fr); }
+    }
+    .left, .right {
+      border-radius: 24px;
+      background: rgba(15, 23, 42, 0.96);
+      padding: 24px 24px 18px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.95), 0 0 0 1px rgba(148, 163, 184, 0.25);
+    }
+    h1 {
+      font-size: clamp(26px, 3vw, 32px);
+      margin-bottom: 10px;
+    }
+    h1 span {
+      background: linear-gradient(to right, #38bdf8, #22c55e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    p { font-size: 14px; line-height: 1.6; color: #d1d5db; margin-bottom: 16px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+    a.btn {
+      border-radius: 999px;
+      padding: 9px 18px;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.15s;
+    }
+    a.btn-primary {
+      background: linear-gradient(135deg, #38bdf8, #22c55e);
+      color: #020617;
+      box-shadow: 0 12px 28px rgba(56, 189, 248, 0.4);
+    }
+    a.btn-primary:hover { transform: translateY(-1px); }
+    a.btn-ghost {
+      background: rgba(15, 23, 42, 0.95);
+      color: #e5e7eb;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+    }
+    a.btn-ghost:hover { transform: translateY(-1px); }
+    .right iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 260px;
+      border-radius: 16px;
+      border: none;
+      background: #020617;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <section class="left">
+      <h1>E‑Invoicing <span>Service Level Agreement</span></h1>
+      <p>
+        View or download the official SLA for the e‑invoicing platform,
+        including uptime commitments, support response targets, and data
+        protection terms.
+      </p>
+      <div class="actions">
+        <!-- Open in new tab -->
+        <a
+          href="i4nnova%20E-Invoice%20SLA.pdf"
+          class="btn btn-primary"
+          target="_blank"
+          rel="noopener"
+        >
+          ↗ Open full‑screen
+        </a>
+        <!-- Force browser to download -->
+        <a
+          href="i4nnova%20E-Invoice%20SLA.pdf"
+          class="btn btn-ghost"
+          download
+        >
+          ⬇ Download PDF
+        </a>
+      </div>
+    </section>
+
+    <section class="right">
+      <!-- Inline preview -->
+      <iframe
+        src="i4nnova%20E-Invoice%20SLA.pdf#view=FitH"
+        title="E‑Invoicing SLA preview"
+      >
+        Your browser does not support embedded PDFs.
+        <a href="i4nnova%20E-Invoice%20SLA.pdf" target="_blank" rel="noopener">
+          Download the PDF
+        </a>
+      </iframe>
+    </section>
+  </main>
+</body>
+</html>
